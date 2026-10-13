@@ -3,6 +3,8 @@ import enums.Base;
 import enums.Salsa;
 import enums.Toppings;
 import java.util.Scanner;
+import model.Orden;
+import model.Pizza;
 
 
 
@@ -103,14 +105,24 @@ public class Vista {
     }
 
     public void mostrarResultadoOrden(boolean aceptada) {
-    if (aceptada) {
-        System.out.println("Orden aceptada.");
-    } else {
-        System.out.println("Orden rechazada: la cocina alcanzó el límite de pedidos pendientes.");
+        if (aceptada) {
+            System.out.println("Orden aceptada.");
+        } else {
+            System.out.println("Orden rechazada: la cocina alcanzó el límite de pedidos pendientes.");
+        }
     }
-}
+
+    public void mostrarResumenOrden(Orden orden) {
+        Pizza pizza = orden.getPizza();
         
-        
-        
-     
+        System.out.println("Resumen de la orden:");
+        System.out.println("Número de orden: " + orden.getNumeroOrden());
+        System.out.println("Masa: " + pizza.getBase());
+        System.out.print("Toppings: ");
+        for (Toppings topping : pizza.getToppings()) {
+            System.out.print(topping + " ");
+        }
+        System.out.println();
+        System.out.println("Salsa: " + pizza.getSalsa());
+    }
 }
